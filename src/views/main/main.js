@@ -2,6 +2,7 @@ import { View } from "../../common/view";
 import onChange from 'on-change';
 import { Header } from "../../components/header/header";
 import { Search } from "../../components/search/search";
+import { CardList } from "../../components/card-list/card-list";
 
 export class MainView extends View {
   state = {
@@ -32,6 +33,10 @@ export class MainView extends View {
       this.state.loading = false;
       this.state.list = data.docs;
     }
+
+    if (path === 'list' || path === 'loading') {
+      this.render();
+    }
   }
 
   async loadList(q, offset) {
@@ -43,10 +48,10 @@ export class MainView extends View {
   render() {
     const main = document.createElement('div');
     main.append(new Search(this.state).render());
+    main.append(new CardList(this.appState, this.state).render());
     this.app.innerHTML = ''
     this.app.append(main);
     this.renderHeader();
-    this.appState.favorites.push('123');
   }
 
   renderHeader() {
