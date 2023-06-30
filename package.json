@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c --watch"
+    "build": "rollup -c --watch",
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
     "eslint-plugin-import": "^2.27.5",
     "rollup": "^3.25.3",
     "rollup-plugin-import-css": "^3.3.1"
+  },
+  "dependencies": {
+    "on-change": "^4.0.2"
   }
 }
